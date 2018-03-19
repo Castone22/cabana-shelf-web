@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 
-import { BookBinderService } from "./shared/services/book-binder.service";
-import { BookData } from './shared/models';
-import { RestService } from "./shared/services/rest.service";
 import {environment} from "../environments/environment";
+import 'jquery'
+declare var $: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit{
   endpoints = environment.endpoints;
 
   constructor(){
 
   }
 
-
+  ngAfterViewInit() {
+    $('.collapsible').collapsible();
+  }
 }
