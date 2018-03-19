@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {BookBinderService} from "../shared/services/book-binder.service";
 import {RestService} from "../shared/services/rest.service";
 import {BookData} from "../shared/models";
+import {$} from "jquery";
 
 @Component({
   selector: 'app-shelf',
   templateUrl: './shelf.component.html',
   styleUrls: ['./shelf.component.css']
 })
-export class ShelfComponent implements OnInit {
+export class ShelfComponent implements AfterViewInit {
 
   books: BookData[] = [];
   restService: RestService;
@@ -30,7 +31,8 @@ export class ShelfComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    $('.collapsible').collapsible();
   }
 
 }

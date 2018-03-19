@@ -11,6 +11,22 @@ div.force-height{
   color:#FF4081;
 }
 
+.card-content .collapsible li .collapsible-header {
+  padding-left: 0;
+}
+
+.card.horizontal .card-stacked .card-content .collapsible{
+  -webkit-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+.card.horizontal .card-stacked .card-content {
+  padding-top: 0;
+}
 .card.horizontal .card-stacked .card-title {
   padding-left: 24px
 }
