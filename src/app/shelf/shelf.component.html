@@ -1,0 +1,18 @@
+<div class="row" id="bookShelf">
+
+  <div class="card horizontal" *ngFor="let book of books; let i = index" id="result_{{i}}">
+    <div class="card-image valign-wrapper">
+      <img src="http://books.google.com/books/content?id={{book.google_id}}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api">
+    </div>
+    <div class="card-stacked">
+      <div class="card-title">{{ book.title }}</div>
+      <div class="card-content" innerHTML="{{ book.description }}"></div>
+      <div class="card-action">
+        <button class="waves-effect waves-light grey darken-3 btn"
+                (click)="unshelfBook(book)">Remove from Shelf</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>

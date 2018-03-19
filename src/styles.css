@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+div.force-height{
+  min-height: 68vh;
+}
+
+.input-field div.error{
+  position: relative;
+  top: -1rem;
+  left: 0;
+  font-size: 0.8rem;
+  color:#FF4081;
+}
+
+.card.horizontal .card-stacked .card-title {
+  padding-left: 24px
+}
+
+.card.horizontal .card-image {
+  width: 25%
+}
+
+.card.horizontal .card-image img {
+  width: 100%
+}
+
+div.force-height{
+  min-height: 68vh;
+}
