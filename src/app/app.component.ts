@@ -1,4 +1,4 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component} from '@angular/core';
 
 import {environment} from "../environments/environment";
 import 'jquery'
@@ -17,6 +17,9 @@ export class AppComponent implements AfterViewInit{
   }
 
   ngAfterViewInit() {
-    $('.collapsible').collapsible();
+    setTimeout(()=> {
+      $('.collapsible').collapsible();
+      }, 2000 );
   }
+
 }
