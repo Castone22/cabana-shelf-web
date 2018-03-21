@@ -1,5 +1,7 @@
 # CabanaShelfWeb
 
+Part of [Cabana](https://github.com/Castone22/Cabana)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
 ## Development server
