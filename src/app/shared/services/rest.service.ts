@@ -26,8 +26,18 @@ export class RestService {
     return this.http.delete(`${environment.endpoints.booksApi}/books/${book.id}`)
   }
 
+  updateBookRead(book: BookData, status: boolean) {
+    return this.http.post(`${environment.endpoints.booksApi}/books/${book.id}`,{read_status: status})
+      .map((response) =>{
+        if(response.ok) {
+          return response.json() as BookData;
+        } else {
+          return this.logError(response);
+        }});
+  }
+
   private logError(error: any){
-    console.error(error)
+    console.error(error);
     return Observable.throw(error);
   }
 

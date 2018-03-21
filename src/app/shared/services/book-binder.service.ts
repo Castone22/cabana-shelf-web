@@ -6,7 +6,7 @@ export class BookBinderService {
   private books: BookData[] = [];
 
   constructor() { }
-
+  getBook(int: number) {return this.books[int]}
   getBooks() { return this.books }
   addBook(book: BookData) {this.books.push(book)}
 
@@ -20,6 +20,20 @@ export class BookBinderService {
     const index = this.books.indexOf(book);
     if(index !== -1) {
       this.books.splice(index, 1)
+    }
+  }
+
+  markRead(book: BookData) {
+    const index = this.books.indexOf(book);
+    if(index !== -1) {
+      this.books[index].read = true;
+    }
+  }
+
+  markUnRead(book: BookData) {
+    const index = this.books.indexOf(book);
+    if(index !== -1) {
+      this.books[index].read = false;
     }
   }
 }

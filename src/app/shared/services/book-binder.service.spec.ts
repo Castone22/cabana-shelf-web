@@ -33,6 +33,10 @@ describe('BookBinderService', () => {
     service.addBook(bookFixtures[0]);
     expect(service.getBooks()).toEqual([bookFixtures[0]]);
   });
+  it('should be able to fetch a single book', () => {
+    service.addBooks(...bookFixtures);
+    expect(service.getBook(1)).toEqual(bookFixtures[1]);
+  });
   it('should contain both books if we add both of them',()=>{
     service.addBook(bookFixtures[0]);
     service.addBook(bookFixtures[1]);
@@ -50,6 +54,14 @@ describe('BookBinderService', () => {
     service.addBooks(bookFixtures[0], bookFixtures[1]);
     service.removeBook(bookFixtures[0]);
     expect(service.getBooks()).toEqual([bookFixtures[1]]);
+  });
+
+  it('can update the read status on a given book', ()=>{
+    service.addBooks(bookFixtures[0], bookFixtures[1]);
+    service.markRead(bookFixtures[1]);
+    expect(service.getBook(1).read).toEqual(true);
+    service.markUnRead(bookFixtures[1]);
+    expect(service.getBook(1).read).toEqual(false);
   });
 
 });

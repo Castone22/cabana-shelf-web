@@ -5,7 +5,7 @@ import {
 } from '@angular/core/testing';
 import {
   BaseRequestOptions,
-  Http,
+  Http, RequestMethod,
   Response,
   ResponseOptions,
   XHRBackend
@@ -23,9 +23,9 @@ describe('Rest Service', () => {
   let backend: MockBackend;
   let service: RestService;
   const testBooks = [
-    { title: 'Ruby II: Back and Shinier than ever', read: true, pagesRead: 0, googleId: 'x553'},
-    { title: 'Ruby III: Sharper than C', read: true, pagesRead: 34, googleId: '5913x'},
-    { title: 'Javascript for Foobars', read: true, pagesRead: 34, googleId: 'xxt52f'}
+    { title: 'Ruby II: Back and Shinier than ever', read: true, pages_read: 0, googleId: 'x553', id: 1},
+    { title: 'Ruby III: Sharper than C', read: true, pages_read: 34, google_id: '5913x', id: 2},
+    { title: 'Javascript for Foobars', read: true, pages_read: 34, google_id: 'xxt52f', id: 3}
   ];
 
   beforeEach(async(()=>{
@@ -58,11 +58,16 @@ describe('Rest Service', () => {
         const response = new Response(responseOptions);
 
         connection.mockRespond(response);
+      } else if(connection.request.method === RequestMethod.Delete || connection.request.method === RequestMethod.Post){
+        const responseOptions = new ResponseOptions(options);
+        const response = new Response(responseOptions);
+
+        connection.mockRespond(response);
       }
     });
   }
 
-  it('should retrieve a list of books from the server on a success', () => {
+  it('should parse responses correctly', () => {
     setupConnections(backend, {body: testBooks, status: 200});
     let response = [];
     service.getBooks().subscribe((data: BookData[]) => {
@@ -71,6 +76,8 @@ describe('Rest Service', () => {
     expect(response.length).toBe(3);
     response.forEach( (it, index) => {expect(it.title).toBe(testBooks[index].title)});
   });
+
+
 
   it('should log an error should something go wrong', () => {
     setupConnections(backend, {
