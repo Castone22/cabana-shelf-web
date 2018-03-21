@@ -6,7 +6,7 @@
 export const environment = {
   endpoints: {
     booksApi: 'http://localhost:3000',
-    cabanaBooks: 'http://localhost:3001'
+    cabanaBooks: 'http://localhost:80'
   },
   production: false
 };
