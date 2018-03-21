@@ -27,7 +27,7 @@ export class RestService {
   }
 
   updateBookRead(book: BookData, status: boolean) {
-    return this.http.post(`${environment.endpoints.booksApi}/books/${book.id}`,{read_status: status})
+    return this.http.post(`${environment.endpoints.booksApi}/books/${book.id}/update_read`,{read: status})
       .map((response) =>{
         if(response.ok) {
           return response.json() as BookData;

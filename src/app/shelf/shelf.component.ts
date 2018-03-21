@@ -21,12 +21,18 @@ export class ShelfComponent {
     this.restService = restService
   }
 
+  setReadStatus(book: BookData, status: boolean){
+    this.restService.updateBookRead(book, status).subscribe((book: BookData) => {
+      status ? this.bookBinderService.markRead(book) : this.bookBinderService.markUnRead(book)
+      this.books = this.bookBinderService.getBooks()
+    });
+  };
+
   unshelfBook(book: BookData) {
     this.restService.removeBook(book).subscribe(null, (error: any) => {console.log(error)}, ()=>{
       this.bookBinderService.removeBook(book);
       this.bookBinderService.getBooks();
     });
-
 
   }
 

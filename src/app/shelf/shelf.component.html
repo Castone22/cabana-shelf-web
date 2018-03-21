@@ -12,6 +12,8 @@
             <div class="collapsible-body"><span innerHTML="{{ book.description }}"></span></div>
           </li>
         </ul>
+        <input id="read_status_{{i}}" class="filled-in" type="checkbox" [checked]="book.read" (click)="book.read = !book.read; setReadStatus(book, book.read)">
+        <label for="read_status_{{i}}"></label>
       </div>
       <div class="card-action">
         <button class="waves-effect waves-light grey darken-3 btn"
